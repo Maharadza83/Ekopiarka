@@ -1,0 +1,28 @@
+<nav class="z-50 w-full py-2 px-5 bg-blue-200 shadow-lg items-center flex z-30 justify-between sticky top-0">
+  <a routerLink="./" class="hidden lg:inline font-semibold text-blue-600">KOPIARKA</a>
+  <a routerLink="./" class="lg:hidden font-semibold text-blue-600">KP</a>
+
+  <div class="flex gap-x-3 lg:gap-x-10">
+    <div class="flex gap-x-1">
+      <button type="button" routerLink="/notes/list" mat-button>Notes</button>
+      <button type="button" routerLink="/notes/add" mat-button>Add</button>
+    </div>
+
+    <div class="flex gap-x-1.5 items-center text-blue-600">
+      @if (user()) {
+        <mat-icon class="!hidden lg:!inline-block" fontIcon="account_circle"></mat-icon>
+        <p class="text-sm pe-2 hidden lg:flex">Hi, {{ user() }}</p>
+        <button type="button" (click)="logOutHandler()" class="!flex !items-center !scale-75 !justify-center !text-blue-600" mat-icon-button color="primary">
+          <mat-icon>logout</mat-icon>
+        </button>
+      } @else {
+        <a routerLink="/auth/login">
+          <button type="button" mat-button>Login</button>
+        </a>
+        <a routerLink="/auth/register">
+          <button type="button" mat-button>Register</button>
+        </a>
+      }
+    </div>
+  </div>
+</nav>
